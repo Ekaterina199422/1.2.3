@@ -1,28 +1,26 @@
 fun main() {
-    val isAudiophile = true
-    val accumulatedPurchases = 5000
-    val discount3 = 0.03
-    val discount5 = 0.05
-    val discountAudiophile = 0.01
-    val totalPrice = 1000
+    val sumPrice = 100
+    val client = true
+    println("Покупка на сумму: $sumPrice руб")
 
-    val finalPrice = if (isAudiophile) {
-        if (accumulatedPurchases in 1001..10000) {
-            totalPrice * (1 - discount3) * (1 - discountAudiophile)
-        } else if (accumulatedPurchases > 10000) {
-            totalPrice * (1 - discount5) * (1 - discountAudiophile)
-        } else {
-            totalPrice
+
+    if (sumPrice > 1000 && sumPrice <= 10000) {
+        print("Со скидкой 100 руб: ")
+        val price = sumPrice - 100
+        println("$price руб")
+        if (client) {
+            print("Со скидкой 1%: ")
+            val priceClient = price - price * 0.01
+            println("$priceClient руб")
         }
     } else {
-        if (accumulatedPurchases in 1001..10000) {
-            totalPrice * (1 - discount3)
-        } else if (accumulatedPurchases > 10000) {
-            totalPrice * (1 - discount5)
-        } else {
-            totalPrice
+        print("Со скидкой 5%: ")
+        val price = sumPrice - sumPrice * 0.05
+        println("$price руб")
+        if (client) {
+            print("Со скидкой 1%: ")
+            val priceClient = price - price * 0.01
+            println("$priceClient руб")
         }
     }
-
-    println("Стоимость товара: $totalPrice, Итог с учетом скидки: $finalPrice")
 }
